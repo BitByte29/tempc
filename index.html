@@ -74,31 +74,37 @@
                 display: flex;
                 flex-direction: column;
             }
+            .terms{
+                margin: 20px;
+            }
+            .equals{
+                display: none;
+            }
 }
     </style>
 </head>
 <body>
-    <div id="clock">00:00:00</div>
+    <div id="clock"><span id="lock">00:00:00</span></div>
     <div class="items">
         <div class="terms">
             <span>
-                <input type="number" id="celcius" value="0"onchange="fromCel(this.value)" oninput="fromCel(this.value)">
+                <input type="number" id="celcius" value="0" onchange="fromCel(this.value)" oninput="fromCel(this.value)">
             </span>
             <span>
                 Celcius
             </span>
-        </div><div style="font-size: 30px;">=</div>
+        </div><div class="equals" style="font-size: 30px;">=</div>
         <div class="terms">
             <span>
-                <input type="number" id="faren" value="32"onchange="fromFaren(this.value)" oninput="fromFaren(this.value)">
+                <input type="number" id="faren" value="32" onchange="fromFaren(this.value)" oninput="fromFaren(this.value)">
             </span>
             <span>
                 Fahrenheit
             </span>
-        </div><div style="font-size: 30px;">=</div>
+        </div><div class="equals" style="font-size: 30px;">=</div>
         <div class="terms">
             <span>
-                <input type="number" id="kelvin" value="273.15"onchange="fromKelvin(this.value)"
+                <input type="number" id="kelvin" value="273.15" onchange="fromKelvin(this.value)"
                 oninput="fromKelvin(this.value)">
             </span>
             <span>
@@ -136,7 +142,7 @@
             f.value = (e - 273.15) * 9 / 5 + 32;
         }
         function getTime(){
-            let clock = document.querySelector('#clock');
+            let clock = document.querySelector('#lock');
             var time = new Date();
             var hr = time.getHours();
             var min = time.getMinutes();
@@ -154,7 +160,7 @@
                 sec='0'+sec;
             }
             
-            clock.innerHTML = "<span>"+hr+"</span><span>:</span><span>"+min+"</span><span>:</span><span>"+sec+"</span>";
+            clock.innerHTML = hr+":"+min+":"+sec;
         }
         setInterval(getTime,1000);
 
