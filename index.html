@@ -20,6 +20,9 @@
             align-items: center;
             flex-direction: row;
         }
+        .items{
+            display: flex;
+        }
         .terms{
             
             display: flex;
@@ -65,36 +68,47 @@
             color: white;
 
         }
+
+        @media screen and (max-width: 800px) {
+            .items{
+                display: flex;
+                flex-direction: column;
+            }
+}
     </style>
 </head>
 <body>
     <div id="clock">00:00:00</div>
+    <div class="items">
+        <div class="terms">
+            <span>
+                <input type="number" id="celcius" value="0"onchange="fromCel(this.value)" oninput="fromCel(this.value)">
+            </span>
+            <span>
+                Celcius
+            </span>
+        </div><div style="font-size: 30px;">=</div>
+        <div class="terms">
+            <span>
+                <input type="number" id="faren" value="32"onchange="fromFaren(this.value)" oninput="fromFaren(this.value)">
+            </span>
+            <span>
+                Fahrenheit
+            </span>
+        </div><div style="font-size: 30px;">=</div>
+        <div class="terms">
+            <span>
+                <input type="number" id="kelvin" value="273.15"onchange="fromKelvin(this.value)"
+                oninput="fromKelvin(this.value)">
+            </span>
+            <span>
+                Kelvin
+            </span>
+        </div>
 
-    <div class="terms">
-        <span>
-            <input type="number" id="celcius" value="0"onchange="fromCel(this.value)" oninput="fromCel(this.value)">
-        </span>
-        <span>
-            Celcius
-        </span>
-    </div><div style="font-size: 30px;">=</div>
-    <div class="terms">
-        <span>
-            <input type="number" id="faren" value="32"onchange="fromFaren(this.value)" oninput="fromFaren(this.value)">
-        </span>
-        <span>
-            Fahrenheit
-        </span>
-    </div><div style="font-size: 30px;">=</div>
-    <div class="terms">
-        <span>
-            <input type="number" id="kelvin" value="273.15"onchange="fromKelvin(this.value)"
-            oninput="fromKelvin(this.value)">
-        </span>
-        <span>
-            Kelvin
-        </span>
     </div>
+
+    
     
     <script>
 
