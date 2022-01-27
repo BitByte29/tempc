@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *
+        {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body
+        {
+            display: flex;
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+        }
+        .terms{
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 200px;
+        }
+        .terms span:nth-child(2)
+        {
+            color: blue;
+        }
+        .terms span input
+        {
+            
+            text-align: center;
+            /* padding: 10px; */
+            font-size: 14px;
+            border: none;
+            color: coral;
+            border-bottom: 2px solid blueviolet;
+            border-top: 2px solid blueviolet;
+            padding: 5px 0; 
+            outline: none;
+            
+        }
+        .terms .sign
+        {
+            font-size: 3px;
+            color: red;
+        }
+        #clock
+        {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: blueviolet;
+            border-radius: 20px;
+            padding: 30px 40px;
+        }
+        #clock span{
+            font-size:32px;
+            color: white;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="clock">00:00:00</div>
+
+    <div class="terms">
+        <span>
+            <input type="number" id="celcius" value="0"onchange="fromCel(this.value)" oninput="fromCel(this.value)">
+        </span>
+        <span>
+            Celcius
+        </span>
+    </div><div style="font-size: 30px;">=</div>
+    <div class="terms">
+        <span>
+            <input type="number" id="faren" value="32"onchange="fromFaren(this.value)" oninput="fromFaren(this.value)">
+        </span>
+        <span>
+            Fahrenheit
+        </span>
+    </div><div style="font-size: 30px;">=</div>
+    <div class="terms">
+        <span>
+            <input type="number" id="kelvin" value="273.15"onchange="fromKelvin(this.value)"
+            oninput="fromKelvin(this.value)">
+        </span>
+        <span>
+            Kelvin
+        </span>
+    </div>
+    
+    <script>
+
+        let c = document.querySelector('#celcius');
+        let f = document.querySelector('#faren');
+        // let f =document.getElementById('faren');
+        let k = document.querySelector('#kelvin');
+
+        function fromCel(e){
+            e = parseFloat (e);
+            f.value = (e * 9/5) + 32;
+            k.value = e + 273.15
+
+        }
+
+        function fromFaren (e){
+            e = parseFloat (e);
+            c.value = (e - 32) * 5 / 9;
+            k.value = (e - 32) * 5 / 9 + 273.15;
+        }
+
+        function fromKelvin(e) {
+            e = parseFloat(e)
+            c.value = e - 273.15;
+            f.value = (e - 273.15) * 9 / 5 + 32;
+        }
+        function getTime(){
+            let clock = document.querySelector('#clock');
+            var time = new Date();
+            var hr = time.getHours();
+            var min = time.getMinutes();
+            var sec = time.getSeconds();
+            if (hr>12){
+                hr= hr-12;
+            }
+            if (hr == 0){
+                hr = 12;
+            }
+            if (min<10){
+                min = '0'+min;
+            }
+            if (sec<10){
+                sec='0'+sec;
+            }
+            
+            clock.innerHTML = "<span>"+hr+"</span><span>:</span><span>"+min+"</span><span>:</span><span>"+sec+"</span>";
+        }
+        setInterval(getTime,1000);
+
+
+
+    </script>
+    
+</body>
+</html>
